@@ -2,7 +2,7 @@
 name: publish
 on: [push]
 jobs:
-  publish-bal-tests-image:
+  publish-hello-docker-image:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -12,9 +12,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build the bal-tests Docker image
+      - name: Build the hello-docker Docker image
         run: |
-          docker build . --tag ghcr.io/miranlfk/bal-tests:latest
-          docker run ghcr.io/miranlfk/bal-tests:latest
-          docker push ghcr.io/miranlfk/bal-tests:latest
+          docker build . --tag ghcr.io/miranlfk/bal-tests-gcr-demo:latest
+          docker run ghcr.io/miranlfk/bal-tests-gcr-demo:latest
+          docker push ghcr.io/miranlfk/bal-tests-gcr-demo:latest
           
